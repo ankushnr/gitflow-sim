@@ -1,0 +1,10 @@
+#!/bin/sh
+branch=$(git rev-parse --abbrev-ref HEAD)
+if [ "$branch" = "main" ] || [ "$branch" = "develop" ]; then
+  echo "Direct commits to $branch are blocked. Use a feature/release/hotfix branch."
+  exit 1
+fi
+echo "Running flake8..."
+python -m flake8 --max-line-length=100 . || exit 1
+echo "Running tests..."
+python -m pytest -q || exit 1
