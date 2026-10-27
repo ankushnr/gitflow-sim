@@ -1,4 +1,4 @@
-from calc import add, divide
+from calc import add, divide, multiply
 
 
 def test_add():
@@ -7,3 +7,7 @@ def test_add():
 
 def test_divide():
     assert divide(6, 3) == 2
+
+
+def test_multiply():
+    assert multiply(2, 3) == 6
